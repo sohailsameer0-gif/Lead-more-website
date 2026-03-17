@@ -78,7 +78,7 @@ const Home: React.FC = () => {
     <div className="relative overflow-x-hidden">
       
       {/* HERO SECTION */}
-      <section className="relative h-[65vh] md:h-[70vh] min-h-[450px] overflow-hidden">
+      <section className="relative h-[450px] md:h-[70vh] min-h-[400px] md:min-h-[450px] overflow-hidden">
         <Slider {...heroSettings} className="h-full">
           {[
             {
@@ -92,21 +92,21 @@ const Home: React.FC = () => {
               desc: "Peshawar's leading safety center with state-of-the-art facilities and expert faculty."
             }
           ].map((slide, index) => (
-            <div key={index} className="relative h-[65vh] md:h-[70vh] min-h-[450px] outline-none">
+            <div key={index} className="relative h-[450px] md:h-[70vh] min-h-[400px] md:min-h-[450px] outline-none">
               <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${slide.img})` }} />
               <div className="absolute inset-0 bg-slate-900/60" />
               <div className="relative z-10 h-full max-w-6xl mx-auto px-6 flex flex-col justify-center">
                 <MotionDiv initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl">
-                  <span className="inline-flex items-center gap-2 bg-primary/20 text-primary px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest mb-4 border border-primary/30">
+                  <span className="inline-flex items-center gap-2 bg-primary/20 text-primary px-3 py-1 rounded-full text-[8px] md:text-[9px] font-black uppercase tracking-widest mb-3 md:mb-4 border border-primary/30">
                     <FaShieldAlt /> Accredited Provider
                   </span>
-                  <h1 className="text-3xl md:text-5xl font-display font-black text-white leading-[1.15] mb-4">{String(slide.title)}</h1>
-                  <p className="text-sm md:text-lg text-slate-200 mb-8 font-medium max-w-lg">{String(slide.desc)}</p>
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <Link to="/courses" className="bg-primary hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-black text-xs uppercase tracking-widest transition-all text-center">
+                  <h1 className="text-3xl md:text-5xl font-display font-black text-white leading-[1.15] mb-3 md:mb-4">{String(slide.title)}</h1>
+                  <p className="text-sm md:text-lg text-slate-200 mb-6 md:mb-8 font-medium max-w-lg">{String(slide.desc)}</p>
+                  <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
+                    <Link to="/courses" className="bg-primary hover:bg-orange-600 text-white px-6 md:px-8 py-3 md:py-3 rounded-lg font-black text-[10px] md:text-xs uppercase tracking-widest transition-all text-center">
                       Curriculum
                     </Link>
-                    <Link to="/enroll" className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-3 rounded-lg font-black text-xs uppercase tracking-widest transition-all text-center">
+                    <Link to="/enroll" className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-6 md:px-8 py-3 md:py-3 rounded-lg font-black text-[10px] md:text-xs uppercase tracking-widest transition-all text-center">
                       Enroll Today
                     </Link>
                   </div>
@@ -118,9 +118,9 @@ const Home: React.FC = () => {
       </section>
 
       {/* STATS GRID */}
-      <section className="relative z-20 -mt-10 md:-mt-14 max-w-6xl mx-auto px-6">
-        <div className="glass shadow-xl rounded-2xl p-6 md:p-8 border border-white/50">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <section className="relative z-20 -mt-8 md:-mt-14 max-w-6xl mx-auto px-4 md:px-6">
+        <div className="glass shadow-xl rounded-xl md:rounded-2xl p-5 md:p-8 border border-white/50">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {[
               { label: 'Academic Years', end: 13, suffix: '+' },
               { label: 'Certified Alumni', end: 2000, suffix: '+' },
@@ -128,11 +128,11 @@ const Home: React.FC = () => {
               { label: 'Global Affiliations', end: 50, suffix: '+' },
             ].map((item, idx) => (
               <div key={idx} className="text-center">
-                <h3 className="text-2xl md:text-3xl font-display font-black text-slate-900 mb-1 leading-none">
+                <h3 className="text-xl md:text-3xl font-display font-black text-slate-900 mb-1 leading-none">
                   <TypedCountUp end={item.end} duration={2} enableScrollSpy />
                   {String(item.suffix)}
                 </h3>
-                <p className="text-slate-500 font-black uppercase text-[8px] md:text-[9px] tracking-widest">{String(item.label)}</p>
+                <p className="text-slate-500 font-black uppercase text-[7px] md:text-[9px] tracking-widest">{String(item.label)}</p>
               </div>
             ))}
           </div>
@@ -140,14 +140,14 @@ const Home: React.FC = () => {
       </section>
 
       {/* ACCREDITATIONS */}
-      <section className="py-12 bg-white/40">
-        <div className="max-w-6xl mx-auto px-6">
-          <p className="text-center text-[8px] font-black uppercase tracking-[0.4em] text-slate-400 mb-8">Institutional Partners & Accreditation</p>
-          <div className="px-2">
+      <section className="py-8 md:py-12 bg-white/40">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
+          <p className="text-center text-[7px] md:text-[8px] font-black uppercase tracking-[0.3em] md:tracking-[0.4em] text-slate-400 mb-6 md:mb-8">Institutional Partners & Accreditation</p>
+          <div className="px-1 md:px-2">
             <Slider {...partnerSettings}>
               {partners.map((p) => (
-                <div key={p.id} className="px-3 outline-none">
-                  <div className="bg-white rounded-xl p-3 md:p-4 h-24 md:h-32 flex items-center justify-center border border-slate-100 shadow-sm hover:shadow-lg transition-all group overflow-hidden">
+                <div key={p.id} className="px-2 md:px-3 outline-none">
+                  <div className="bg-white rounded-lg md:rounded-xl p-2 md:p-4 h-20 md:h-32 flex items-center justify-center border border-slate-100 shadow-sm hover:shadow-lg transition-all group overflow-hidden">
                     <img 
                       src={String(p.logo)} 
                       alt={String(p.name)} 
@@ -162,34 +162,34 @@ const Home: React.FC = () => {
       </section>
 
       {/* FEATURED PROGRAMS */}
-      <section className="py-16 bg-slate-50/50">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
+      <section className="py-12 md:py-16 bg-slate-50/50">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-10 gap-4">
             <div className="max-w-xl">
-              <h2 className="text-2xl md:text-3xl font-display font-black text-slate-900 mb-2">Academic <span className="text-primary">Safety</span> Excellence</h2>
-              <p className="text-slate-500 text-xs md:text-sm font-medium">NEBOSH, IGC, and IRCA ISO Lead Auditor programs.</p>
+              <h2 className="text-xl md:text-3xl font-display font-black text-slate-900 mb-1 md:mb-2">Academic <span className="text-primary">Safety</span> Excellence</h2>
+              <p className="text-slate-500 text-[10px] md:text-sm font-medium">NEBOSH, IGC, and IRCA ISO Lead Auditor programs.</p>
             </div>
-            <Link to="/courses" className="text-primary font-black uppercase tracking-widest text-[8px] flex items-center gap-2 group bg-white px-5 py-2 rounded-lg shadow-sm border border-slate-100">
+            <Link to="/courses" className="text-primary font-black uppercase tracking-widest text-[7px] md:text-[8px] flex items-center gap-2 group bg-white px-4 md:px-5 py-2 rounded-lg shadow-sm border border-slate-100">
               View All <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {courses.slice(0, 3).map((course) => (
-              <MotionDiv key={course.id} whileHover={{ y: -5 }} className="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col group h-full">
-                <div className="h-44 md:h-52 relative overflow-hidden">
+              <MotionDiv key={course.id} whileHover={{ y: -5 }} className="bg-white rounded-xl md:rounded-2xl overflow-hidden shadow-lg border border-slate-100 flex flex-col group h-full">
+                <div className="h-40 md:h-52 relative overflow-hidden">
                   <img src={String(course.image)} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt={String(course.title)} />
-                  <div className="absolute top-4 right-4 bg-primary text-white text-[8px] font-black px-3 py-1 rounded-full shadow-lg">{String(course.fee)}</div>
-                  <div className="absolute top-4 left-4">
-                    <span className={`px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest text-white backdrop-blur-md border border-white/20 ${course.courseType === 'video' ? 'bg-secondary/60' : 'bg-primary/60'}`}>
+                  <div className="absolute top-3 md:top-4 right-3 md:right-4 bg-primary text-white text-[7px] md:text-[8px] font-black px-2 md:px-3 py-0.5 md:py-1 rounded-full shadow-lg">{String(course.fee)}</div>
+                  <div className="absolute top-3 md:top-4 left-3 md:left-4">
+                    <span className={`px-2 md:px-3 py-0.5 md:py-1 rounded-full text-[7px] md:text-[8px] font-black uppercase tracking-widest text-white backdrop-blur-md border border-white/20 ${course.courseType === 'video' ? 'bg-secondary/60' : 'bg-primary/60'}`}>
                       {String(course.courseType === 'video' ? 'Online' : 'Campus')}
                     </span>
                   </div>
                 </div>
-                <div className="p-6 md:p-8 flex flex-col flex-grow">
-                  <h3 className="text-lg md:text-xl font-display font-black text-slate-900 mb-2 line-clamp-1">{String(course.title)}</h3>
-                  <p className="text-[8px] font-black uppercase tracking-widest text-slate-400 bg-slate-50 px-2 py-0.5 rounded border border-slate-100 w-fit mb-4">{String(course.duration)}</p>
-                  <p className="text-slate-500 text-xs mb-8 line-clamp-3 font-medium leading-relaxed">{String(course.description)}</p>
-                  <Link to={`/courses/${course.id}`} className="mt-auto block text-center py-3 bg-slate-950 text-white hover:bg-primary transition-all rounded-xl font-black text-[8px] uppercase tracking-widest">
+                <div className="p-5 md:p-8 flex flex-col flex-grow">
+                  <h3 className="text-base md:text-xl font-display font-black text-slate-900 mb-1 md:mb-2 line-clamp-1">{String(course.title)}</h3>
+                  <p className="text-[7px] md:text-[8px] font-black uppercase tracking-widest text-slate-400 bg-slate-50 px-1.5 md:px-2 py-0.5 rounded border border-slate-100 w-fit mb-3 md:mb-4">{String(course.duration)}</p>
+                  <p className="text-slate-500 text-[10px] md:text-xs mb-6 md:mb-8 line-clamp-3 font-medium leading-relaxed">{String(course.description)}</p>
+                  <Link to={`/courses/${course.id}`} className="mt-auto block text-center py-2.5 md:py-3 bg-slate-950 text-white hover:bg-primary transition-all rounded-lg md:rounded-xl font-black text-[7px] md:text-[8px] uppercase tracking-widest">
                     Details
                   </Link>
                 </div>
@@ -200,18 +200,18 @@ const Home: React.FC = () => {
       </section>
 
       {/* EXPERT FACULTY */}
-      <section className="py-16 bg-white overflow-hidden">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <span className="text-primary font-black uppercase tracking-[0.3em] text-[8px] mb-2 block">Institutional Faculty</span>
-          <h2 className="text-2xl md:text-3xl font-display font-black text-slate-900 mb-12 tracking-tight">Learn from <span className="text-primary">Certified</span> Experts</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
+      <section className="py-12 md:py-16 bg-white overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4 md:px-6 text-center">
+          <span className="text-primary font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-[7px] md:text-[8px] mb-1 md:mb-2 block">Institutional Faculty</span>
+          <h2 className="text-xl md:text-3xl font-display font-black text-slate-900 mb-8 md:mb-12 tracking-tight">Learn from <span className="text-primary">Certified</span> Experts</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-10">
             {(team.length > 0 ? team : [...Array(4)]).map((member, idx) => (
               <MotionDiv key={member?.id || idx} className="group flex flex-col items-center">
-                <div className="w-24 h-24 md:w-40 md:h-40 rounded-2xl md:rounded-[32px] overflow-hidden mb-3 md:mb-4 border-4 border-slate-50 shadow-md group-hover:border-white transition-all">
+                <div className="w-20 h-20 md:w-40 md:h-40 rounded-xl md:rounded-[32px] overflow-hidden mb-2 md:mb-4 border-2 md:border-4 border-slate-50 shadow-md group-hover:border-white transition-all">
                   <img src={String(member?.image || 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800')} className="w-full h-full object-cover transition-all duration-700" alt={String(member?.name)} />
                 </div>
-                <h4 className="text-xs md:text-base font-black text-slate-900 group-hover:text-primary transition-colors">{String(member?.name || 'Faculty Member')}</h4>
-                <p className="text-primary font-black uppercase tracking-widest text-[7px] md:text-[8px] bg-orange-50 px-3 py-1 rounded-lg border border-orange-100 mt-1">{String(member?.role || 'Instructor')}</p>
+                <h4 className="text-[10px] md:text-base font-black text-slate-900 group-hover:text-primary transition-colors">{String(member?.name || 'Faculty Member')}</h4>
+                <p className="text-primary font-black uppercase tracking-widest text-[6px] md:text-[8px] bg-orange-50 px-2 md:px-3 py-0.5 md:py-1 rounded-md md:rounded-lg border border-orange-100 mt-1">{String(member?.role || 'Instructor')}</p>
               </MotionDiv>
             ))}
           </div>
@@ -219,31 +219,31 @@ const Home: React.FC = () => {
       </section>
 
       {/* STUDENT SUCCESS STORIES */}
-      <section className="py-16 bg-slate-900 overflow-hidden relative">
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-12">
-            <span className="text-primary font-black uppercase tracking-[0.3em] text-[8px] mb-2 block">Alumni Success</span>
-            <h2 className="text-2xl md:text-3xl font-display font-black text-white mb-3">Student <span className="text-primary">Success</span> Stories</h2>
-            <p className="text-slate-400 font-medium text-xs max-w-xl mx-auto">Real experiences from our certified Pakistani alumni working globally.</p>
+      <section className="py-12 md:py-16 bg-slate-900 overflow-hidden relative">
+        <div className="max-w-6xl mx-auto px-4 md:px-6 relative z-10">
+          <div className="text-center mb-10 md:mb-12">
+            <span className="text-primary font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-[7px] md:text-[8px] mb-1 md:mb-2 block">Alumni Success</span>
+            <h2 className="text-xl md:text-3xl font-display font-black text-white mb-2 md:mb-3">Student <span className="text-primary">Success</span> Stories</h2>
+            <p className="text-slate-400 font-medium text-[10px] md:text-xs max-w-xl mx-auto">Real experiences from our certified Pakistani alumni working globally.</p>
           </div>
           
-          <div className="px-2">
+          <div className="px-1 md:px-2">
             <Slider {...reviewSettings}>
               {actualReviews.map((r) => (
-                <div key={r.id} className="px-3 outline-none">
-                  <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 h-full flex flex-col relative group hover:bg-white/10 transition-all">
-                    <FaQuoteLeft className="text-primary text-2xl opacity-20 absolute top-6 right-6" />
-                    <div className="flex gap-1 mb-4 text-yellow-400">
-                      {[...Array(5)].map((_, i) => <FaStar key={i} size={10} />)}
+                <div key={r.id} className="px-2 md:px-3 outline-none">
+                  <div className="bg-white/5 border border-white/10 rounded-xl md:rounded-2xl p-5 md:p-8 h-full flex flex-col relative group hover:bg-white/10 transition-all">
+                    <FaQuoteLeft className="text-primary text-xl md:text-2xl opacity-20 absolute top-5 md:top-6 right-5 md:right-6" />
+                    <div className="flex gap-1 mb-3 md:mb-4 text-yellow-400">
+                      {[...Array(5)].map((_, i) => <FaStar key={i} size={8} />)}
                     </div>
-                    <p className="text-slate-200 italic leading-relaxed text-xs md:text-sm mb-8 flex-grow">"{String(r.text)}"</p>
-                    <div className="flex items-center gap-3 mt-auto border-t border-white/5 pt-4">
-                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg overflow-hidden border border-primary/30 shadow-xl flex-shrink-0">
-                        {r.image ? <img src={String(r.image)} className="w-full h-full object-cover" /> : <div className="w-full h-full flex items-center justify-center font-black bg-primary text-white text-base">{String(r.name).charAt(0)}</div>}
+                    <p className="text-slate-200 italic leading-relaxed text-[10px] md:text-sm mb-6 md:mb-8 flex-grow">"{String(r.text)}"</p>
+                    <div className="flex items-center gap-2 md:gap-3 mt-auto border-t border-white/5 pt-3 md:pt-4">
+                      <div className="w-8 h-8 md:w-12 md:h-12 rounded-md md:rounded-lg overflow-hidden border border-primary/30 shadow-xl flex-shrink-0">
+                        {r.image ? <img src={String(r.image)} className="w-full h-full object-cover" /> : <div className="w-full h-full flex items-center justify-center font-black bg-primary text-white text-xs md:text-base">{String(r.name).charAt(0)}</div>}
                       </div>
                       <div>
-                        <h5 className="font-black text-white text-xs md:text-sm">{String(r.name)}</h5>
-                        <p className="text-[7px] md:text-[8px] text-primary font-black uppercase tracking-widest">{String(r.role || 'Graduate')}</p>
+                        <h5 className="font-black text-white text-[10px] md:text-sm">{String(r.name)}</h5>
+                        <p className="text-[6px] md:text-[8px] text-primary font-black uppercase tracking-widest">{String(r.role || 'Graduate')}</p>
                       </div>
                     </div>
                   </div>
@@ -255,13 +255,13 @@ const Home: React.FC = () => {
       </section>
 
       {/* FAQ HELP DESK */}
-      <section className="py-16 bg-white">
-        <div className="max-w-3xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <span className="text-primary font-black uppercase tracking-[0.3em] text-[8px] mb-2 block">Help Desk</span>
-            <h2 className="text-2xl md:text-3xl font-display font-black text-slate-900 tracking-tight">Common <span className="text-primary">Questions</span></h2>
+      <section className="py-12 md:py-16 bg-white">
+        <div className="max-w-3xl mx-auto px-4 md:px-6">
+          <div className="text-center mb-10 md:mb-12">
+            <span className="text-primary font-black uppercase tracking-[0.2em] md:tracking-[0.3em] text-[7px] md:text-[8px] mb-1 md:mb-2 block">Help Desk</span>
+            <h2 className="text-xl md:text-3xl font-display font-black text-slate-900 tracking-tight">Common <span className="text-primary">Questions</span></h2>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-3 md:space-y-4">
             {faq.map((item) => (
               <FAQItem key={item.id} question={String(item.question)} answer={String(item.answer)} />
             ))}

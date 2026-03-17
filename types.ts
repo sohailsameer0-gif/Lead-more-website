@@ -79,3 +79,14 @@ export interface GalleryItem {
   category: string;
   createdAt: any;
 }
+
+export interface Certificate {
+  id: string;
+  studentName: string;
+  fatherName: string;
+  courseName: string;
+  issuedDate: string;
+  serialNumber: string;
+  certificateImage: string;
+  createdAt: any;
+}

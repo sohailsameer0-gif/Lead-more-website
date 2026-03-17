@@ -31,8 +31,8 @@ const Login: React.FC = () => {
       const adminDoc = await getDoc(doc(db, 'admins', userEmail));
       return adminDoc.exists();
     } catch (err) {
-       console.error("Whitelist check failed", err);
-       return false;
+      console.error("Whitelist check failed", err);
+      return false;
     }
   };
 

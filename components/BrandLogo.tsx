@@ -7,47 +7,37 @@ interface BrandLogoProps {
 }
 
 const BrandLogo: React.FC<BrandLogoProps> = ({ variant = 'dark', className = '' }) => {
-  const mainColor = variant === 'dark' ? '#1e293b' : '#ffffff'; // slate-800 or white
+  const mainColor = variant === 'dark' ? '#0f172a' : '#ffffff'; // slate-900 or white
   const accentColor = '#f97316'; // orange-500
 
   return (
     <svg 
       xmlns="http://www.w3.org/2000/svg" 
-      viewBox="0 0 360 110" 
+      viewBox="0 0 520 140" 
       className={className} 
       fill="none"
-      aria-label="Lead More - Institute of Future Skills"
+      aria-label="Lead More - Institute of future skills"
     >
       {/* 
          GRAPHIC ICON
-         Style: Continuous orange line forming 3 ascending loops (bodies) with solid dots (heads) floating above.
+         Style: Continuous orange line forming 3 ascending loops with dots floating above.
       */}
       
-      <g transform="translate(10, 15)">
-        {/* The Orange Pulse Line */}
+      <g transform="translate(10, 20)">
+        {/* The Orange Pulse Line - Matching the image's flow with better curves */}
         <path 
           d="M 0 65 
-             L 15 65 
-             Q 20 65 20 60
-             L 20 45 
-             A 7 7 0 0 1 34 45 
-             L 34 60
-             Q 34 65 39 65
-             L 44 65
-             Q 49 65 49 60
-             L 49 30
-             A 7 7 0 0 1 63 30
-             L 63 60
-             Q 63 65 68 65
-             L 73 65
-             Q 78 65 78 60
-             L 78 15
-             A 7 7 0 0 1 92 15
-             L 92 60
-             Q 92 65 97 65
-             L 115 65" 
+             C 10 65 15 65 20 65
+             C 25 65 25 40 35 40
+             C 45 40 45 65 50 65
+             C 55 65 55 90 65 90
+             C 75 90 75 25 85 25
+             C 95 25 95 105 105 105
+             C 115 105 115 10 125 10
+             C 135 10 135 75 145 75
+             L 175 75" 
           stroke={accentColor} 
-          strokeWidth="6" 
+          strokeWidth="7" 
           strokeLinecap="round" 
           strokeLinejoin="round"
           fill="none"
@@ -55,38 +45,41 @@ const BrandLogo: React.FC<BrandLogoProps> = ({ variant = 'dark', className = '' 
         
         {/* Arrow Head */}
         <path 
-          d="M 108 58 L 116 65 L 108 72" 
+          d="M 168 67 L 178 75 L 168 83" 
           stroke={accentColor} 
-          strokeWidth="6" 
+          strokeWidth="7" 
           strokeLinecap="round" 
           strokeLinejoin="round" 
         />
 
-        {/* Solid Dots (Heads) floating above the peaks - Now FILLED */}
-        {/* Peak 1 Center: x=27, Top y=38 -> Dot y=28 */}
-        <circle cx="27" cy="28" r="5" fill={mainColor} />
+        {/* Floating Dots - White rings with dark centers */}
+        {/* Dot 1 */}
+        <circle cx="35" cy="25" r="7" fill="white" />
+        <circle cx="35" cy="25" r="3" fill="#0f172a" />
         
-        {/* Peak 2 Center: x=56, Top y=23 -> Dot y=13 */}
-        <circle cx="56" cy="13" r="5" fill={mainColor} />
+        {/* Dot 2 */}
+        <circle cx="85" cy="10" r="7" fill="white" />
+        <circle cx="85" cy="10" r="3" fill="#0f172a" />
         
-        {/* Peak 3 Center: x=85, Top y=8 -> Dot y=-2 */}
-        <circle cx="85" cy="-2" r="5" fill={mainColor} />
+        {/* Dot 3 */}
+        <circle cx="125" cy="-5" r="7" fill="white" />
+        <circle cx="125" cy="-5" r="3" fill="#0f172a" />
       </g>
 
       {/* TEXT SECTION */}
-      <g transform="translate(135, 0)">
+      <g transform="translate(195, 25)">
         {/* Main Title "Lead More" */}
-        <text x="0" y="60" fontFamily="'Inter', sans-serif" fontWeight="800" fontSize="44" fill={mainColor} letterSpacing="-1px">Lead</text>
-        <text x="102" y="60" fontFamily="'Inter', sans-serif" fontWeight="800" fontSize="44" fill={accentColor} letterSpacing="-1px">More</text>
+        <text x="0" y="45" fontFamily="'Inter', sans-serif" fontWeight="700" fontSize="52" fill={mainColor} letterSpacing="-1px">Lead</text>
+        <text x="125" y="45" fontFamily="'Inter', sans-serif" fontWeight="700" fontSize="52" fill={accentColor} letterSpacing="-1px">More</text>
 
-        {/* Subtitle "Institute of Future Skills" - Capitalized First Letters */}
-        <text x="2" y="82" fontFamily="serif" fontStyle="italic" fontWeight="500" fontSize="18" fill={mainColor}>
-          Institute of Future Skills
+        {/* Subtitle "Institute of future skills" - Serif, Italic */}
+        <text x="45" y="75" fontFamily="'Times New Roman', serif" fontStyle="italic" fontWeight="600" fontSize="24" fill={mainColor}>
+          Institute of future skills
         </text>
 
-        {/* Tagline "Planning • Integrity • Teamwork" - Capitalized */}
-        <text x="5" y="100" fontFamily="'Inter', sans-serif" fontWeight="600" fontSize="11" fill={mainColor} letterSpacing="0.2px">
-          Planning <tspan fill={accentColor} fontSize="14" dx="1" dy="1">•</tspan><tspan dx="1" dy="-1"> Integrity </tspan><tspan fill={accentColor} fontSize="14" dx="1" dy="1">•</tspan><tspan dx="1" dy="-1"> Teamwork</tspan>
+        {/* Tagline "Planning • integrity • Teamwork" */}
+        <text x="55" y="95" fontFamily="'Inter', sans-serif" fontWeight="700" fontSize="14" fill={mainColor} letterSpacing="0.5px">
+          Planning <tspan fill={accentColor} fontSize="18" dx="2" dy="1">•</tspan><tspan dx="2" dy="-1">integrity</tspan> <tspan fill={accentColor} fontSize="18" dx="2" dy="1">•</tspan><tspan dx="2" dy="-1">Teamwork</tspan>
         </text>
       </g>
     </svg>

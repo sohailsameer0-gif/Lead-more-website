@@ -5,8 +5,7 @@ import { collection, onSnapshot, doc, setDoc, addDoc, deleteDoc, serverTimestamp
 import { Course } from '../types';
 import { FaEdit, FaTrash, FaPlus, FaTimes, FaImage, FaUniversity, FaLaptopCode } from 'react-icons/fa';
 
-const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/djrxx2wuz/image/upload";
-const UPLOAD_PRESET = "ml_default";
+import { uploadToCloudinary } from '../utils/cloudinary';
 
 const CoursesAdmin: React.FC = () => {
   const [courses, setCourses] = useState<Course[]>([]);
@@ -25,16 +24,6 @@ const CoursesAdmin: React.FC = () => {
     });
     return () => unsubscribe();
   }, []);
-
-  const uploadToCloudinary = async (file: File): Promise<string> => {
-    const fd = new FormData();
-    fd.append('file', file);
-    fd.append('upload_preset', UPLOAD_PRESET);
-    const res = await fetch(CLOUDINARY_URL, { method: 'POST', body: fd });
-    if (!res.ok) throw new Error('Upload Failed');
-    const data = await res.json();
-    return data.secure_url;
-  };
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();

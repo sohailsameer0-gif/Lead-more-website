@@ -5,8 +5,7 @@ import { collection, getDocs, doc, setDoc, addDoc, serverTimestamp, deleteDoc } 
 import { TeamMember } from '../types';
 import { FaEdit, FaTrash, FaPlus, FaTimes, FaSave, FaUserCircle, FaCloudUploadAlt } from 'react-icons/fa';
 
-const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/djrxx2wuz/image/upload";
-const UPLOAD_PRESET = "ml_default";
+import { uploadToCloudinary } from '../utils/cloudinary';
 
 const TeamAdmin: React.FC = () => {
   const [team, setTeam] = useState<TeamMember[]>([]);
@@ -31,24 +30,6 @@ const TeamAdmin: React.FC = () => {
   };
 
   useEffect(() => { fetchTeam(); }, []);
-
-  const uploadToCloudinary = async (file: File): Promise<string> => {
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', UPLOAD_PRESET);
-    
-    const response = await fetch(CLOUDINARY_URL, {
-      method: 'POST',
-      body: formData,
-    });
-    
-    if (!response.ok) {
-      throw new Error('Cloudinary upload failed');
-    }
-    
-    const data = await response.json();
-    return data.secure_url;
-  };
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();

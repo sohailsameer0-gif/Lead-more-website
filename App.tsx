@@ -12,6 +12,7 @@ import ContactUs from './pages/ContactUs';
 import AboutUs from './pages/AboutUs';
 import Gallery from './pages/Gallery';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import VerifyCertificate from './pages/VerifyCertificate';
 import WhatsAppButton from './components/WhatsAppButton';
 
 // Admin Imports
@@ -26,6 +27,7 @@ import FAQAdmin from './admin/FAQAdmin';
 import PartnersAdmin from './admin/PartnersAdmin';
 import GalleryAdmin from './admin/GalleryAdmin';
 import MessagesAdmin from './admin/MessagesAdmin';
+import CertificatesAdmin from './admin/CertificatesAdmin';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -57,6 +59,7 @@ const App: React.FC = () => {
           <Route path="/about" element={<PublicLayout><AboutUs /></PublicLayout>} />
           <Route path="/gallery" element={<PublicLayout><Gallery /></PublicLayout>} />
           <Route path="/privacy" element={<PublicLayout><PrivacyPolicy /></PublicLayout>} />
+          <Route path="/verify" element={<PublicLayout><VerifyCertificate /></PublicLayout>} />
 
           {/* Admin Routes */}
           <Route path="/admin/login" element={<Login />} />
@@ -70,6 +73,7 @@ const App: React.FC = () => {
             <Route path="team" element={<TeamAdmin />} />
             <Route path="faq" element={<FAQAdmin />} />
             <Route path="partners" element={<PartnersAdmin />} />
+            <Route path="certificates" element={<CertificatesAdmin />} />
           </Route>
         </Routes>
       </Router>

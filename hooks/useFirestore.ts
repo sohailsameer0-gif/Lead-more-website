@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { db } from '../firebase';
 import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
-import { Course, Review, TeamMember, FAQItem, Partner, GalleryItem } from '../types';
+import { Course, Review, TeamMember, FAQItem, Partner, GalleryItem, Certificate } from '../types';
 
 function useCollection<T>(collectionName: string, orderByField: string = 'createdAt') {
   const [data, setData] = useState<T[]>([]);
@@ -22,7 +22,12 @@ function useCollection<T>(collectionName: string, orderByField: string = 'create
         setLoading(false);
         setError(null);
       }, (err) => {
-        console.error(`Error in ${collectionName} stream:`, err.message);
+        // Silencing permission errors for public streams to avoid console noise
+        if (err.message.includes('permission-denied') || err.message.includes('Missing or insufficient permissions')) {
+          console.warn(`Firestore: ${collectionName} collection is currently restricted.`);
+        } else {
+          console.error(`Error in ${collectionName} stream:`, err.message);
+        }
         setError(err.message);
         setLoading(false);
       });
@@ -32,6 +37,8 @@ function useCollection<T>(collectionName: string, orderByField: string = 'create
 
   return { data, loading, error };
 }
+
+export { useCollection };
 
 export const useCourses = () => {
   const { data, loading, error } = useCollection<Course>('courses');
@@ -60,4 +67,9 @@ export const useMessages = () => {
 export const useEnrollments = () => {
   const { data, loading, error } = useCollection<any>('enrollments');
   return { enrollments: data, loading, error };
+};
+
+export const useCertificates = () => {
+  const { data, loading, error } = useCollection<Certificate>('certificates');
+  return { certificates: data, loading, error };
 };

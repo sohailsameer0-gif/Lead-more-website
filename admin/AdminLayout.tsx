@@ -7,7 +7,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import BrandLogo from '../components/BrandLogo';
 import { motion } from 'framer-motion';
 import { MdDashboard, MdClass, MdPeople, MdLogout, MdRateReview, MdGroups, MdQuestionAnswer, MdHandshake, MdError, MdPhotoLibrary, MdEmail } from 'react-icons/md';
-import { FaBars } from 'react-icons/fa';
+import { FaBars, FaCertificate } from 'react-icons/fa';
 
 const AdminLayout: React.FC = () => {
   const { currentUser, logout, loading } = useAuth();
@@ -28,7 +28,9 @@ const AdminLayout: React.FC = () => {
         const adminDoc = await getDoc(doc(db, 'admins', currentUser.email!));
         if (adminDoc.exists()) { setIsAuthorized(true); setAccessDenied(false); } 
         else { setAccessDenied(true); }
-      } catch (error: any) { setAccessDenied(true); } 
+      } catch (error) { 
+        setAccessDenied(true); 
+      } 
       finally { setAuthChecking(false); }
     };
     verifyAccess();
@@ -46,6 +48,7 @@ const AdminLayout: React.FC = () => {
     { name: 'Faculty Profiles', path: '/admin/team', icon: MdGroups },
     { name: 'Support FAQ', path: '/admin/faq', icon: MdQuestionAnswer },
     { name: 'Registry Partners', path: '/admin/partners', icon: MdHandshake },
+    { name: 'Certificate Registry', path: '/admin/certificates', icon: FaCertificate },
   ];
 
   if (loading || authChecking) return <div className="min-h-screen flex items-center justify-center bg-slate-950"><div className="animate-spin rounded-full h-14 w-14 border-t-4 border-b-4 border-primary"></div></div>;

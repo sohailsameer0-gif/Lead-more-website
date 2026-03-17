@@ -5,8 +5,7 @@ import { collection, onSnapshot, doc, setDoc, addDoc, serverTimestamp, deleteDoc
 import { Partner } from '../types';
 import { FaEdit, FaTrash, FaPlus, FaTimes, FaSave, FaHandshake, FaImage } from 'react-icons/fa';
 
-const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/djrxx2wuz/image/upload";
-const UPLOAD_PRESET = "ml_default";
+import { uploadToCloudinary } from '../utils/cloudinary';
 
 const PartnersAdmin: React.FC = () => {
   const [partners, setPartners] = useState<Partner[]>([]);
@@ -26,16 +25,6 @@ const PartnersAdmin: React.FC = () => {
     });
     return () => unsubscribe();
   }, []);
-
-  const uploadToCloudinary = async (file: File): Promise<string> => {
-    const fd = new FormData();
-    fd.append('file', file);
-    fd.append('upload_preset', UPLOAD_PRESET);
-    const res = await fetch(CLOUDINARY_URL, { method: 'POST', body: fd });
-    if (!res.ok) throw new Error('Cloudinary Error');
-    const data = await res.json();
-    return data.secure_url;
-  };
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
